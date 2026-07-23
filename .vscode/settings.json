@@ -52,7 +52,7 @@
       "alias": "smart_sales",
       "type": "file",
       "path": "./artifacts/smart_sales.duckdb",
-      "readOnly": true,
+      "readOnly": false,
       "attached": false
     }
   ],
