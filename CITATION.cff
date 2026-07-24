@@ -21,8 +21,12 @@ authors:
     orcid: "https://orcid.org/0000-0001-6165-7389"
     affiliation: "Northwest Missouri State University, School of Computer Science and Information Systems, Maryville, MO, USA"
 
-repository-code: "https://github.com/denisecase/bintel-04-warehouse"
-url: "https://github.com/denisecase/bintel-04-warehouse"
+  - family-names: Atchoe
+    given-names: Arnold K.
+    orcid: "https://orcid.org/0000-0001-6165-7389"
+    affiliation: "Northwest Missouri State University, School of Computer Science and Information Systems, Maryville, MO, USA"
+repository-code: "https://github.com/kwameape123/bintel-04-warehouse"
+url: "https://github.com/kwameape123/bintel-04-warehouse"
 license: MIT
 
 abstract: >
