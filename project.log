@@ -148,3 +148,1044 @@
 2026-07-23 11:22:02 | INFO | BI | ========================
 2026-07-23 11:22:02 | INFO | BI | Executed successfully!
 2026-07-23 11:22:02 | INFO | BI | ========================
+2026-07-24 20:40:51 | INFO | BI | === RUN START ===
+2026-07-24 20:40:51 | INFO | BI | project=BI
+2026-07-24 20:40:51 | INFO | BI | repo_dir=bintel-04-warehouse
+2026-07-24 20:40:51 | INFO | BI | python=3.14.6
+2026-07-24 20:40:51 | INFO | BI | os=Windows 11
+2026-07-24 20:40:51 | INFO | BI | shell=powershell
+2026-07-24 20:40:51 | INFO | BI | cwd=.
+2026-07-24 20:40:51 | INFO | BI | github_actions=False
+2026-07-24 20:40:51 | INFO | BI | ========================
+2026-07-24 20:40:51 | INFO | BI | START main()
+2026-07-24 20:40:51 | INFO | BI | ========================
+2026-07-24 20:40:51 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-24 20:40:51 | INFO | BI | Create the artifacts/ folder if it does not exist
+2026-07-24 20:40:51 | INFO | BI | Connect to DuckDB - creates the file if it does not exist
+2026-07-24 20:40:51 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-24 20:40:51 | INFO | BI | Created conn: a DuckDB connection object
+2026-07-24 20:40:51 | INFO | BI | CALL a function to delete tables in reverse order of creation
+2026-07-24 20:40:51 | INFO | BI | START delete tables....
+2026-07-24 20:40:51 | INFO | BI | - Dropping fact_sales table if it exists
+2026-07-24 20:40:51 | INFO | BI | - Dropping dim_products table if it exists
+2026-07-24 20:40:51 | INFO | BI | - Dropping dim_customers table if it exists
+2026-07-24 20:40:51 | INFO | BI | - Dropping dim_stores table if it exists
+2026-07-24 20:40:51 | INFO | BI | - Dropping dim_campaigns table if it exists
+2026-07-24 20:40:51 | INFO | BI |   All tables deleted.
+2026-07-24 20:40:51 | INFO | BI | CALL a function to create dim_customers........
+2026-07-24 20:40:51 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 20:40:51 | INFO | BI | START create customers dimension table....
+2026-07-24 20:40:51 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 20:40:51 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_customers
+2026-07-24 20:40:51 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 20:40:51 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 20:40:51 | INFO | BI | - Every table should have one primary key column
+2026-07-24 20:40:51 | INFO | BI | - Look at the data to decide suitable column types
+2026-07-24 20:40:51 | INFO | BI | - customer_id is the primary key and should be an INTEGER
+2026-07-24 20:40:51 | INFO | BI | - first_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 20:40:51 | INFO | BI | - last_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 20:40:51 | INFO | BI | - region is text so we use VARCHAR (variable number of characters)
+2026-07-24 20:40:51 | INFO | BI | - join_date should be a DATE column
+2026-07-24 20:40:51 | INFO | BI | - customer_type is text so we use VARCHAR (variable number of characters)
+2026-07-24 20:40:51 | INFO | BI | - customer_tenure_years is an INTEGER column
+2026-07-24 20:40:51 | INFO | BI |   dim_customers created.
+2026-07-24 20:40:51 | INFO | BI | CALL a function to create dim_products........
+2026-07-24 20:40:51 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 20:40:51 | INFO | BI | START create products dimension table....
+2026-07-24 20:40:51 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 20:40:51 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_products
+2026-07-24 20:40:51 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 20:40:51 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 20:40:51 | INFO | BI | - Every table should have one primary key column
+2026-07-24 20:40:51 | INFO | BI | - Look at the data to decide suitable column types
+2026-07-24 20:40:51 | INFO | BI | - product_id is the primary key and should be an INTEGER
+2026-07-24 20:40:51 | INFO | BI | - category is text so we use VARCHAR (variable number of characters)
+2026-07-24 20:40:51 | INFO | BI | - name is text so we use VARCHAR (variable number of characters)
+2026-07-24 20:40:51 | INFO | BI | - unit_price should be a DOUBLE column
+2026-07-24 20:40:51 | INFO | BI | - unit_cost should be a DOUBLE column
+2026-07-24 20:40:51 | INFO | BI | - average_quality_rating should be a INT column
+2026-07-24 20:40:51 | INFO | BI | - quality_rating is text so we use VARCHAR (variable number of characters)
+2026-07-24 20:40:51 | INFO | BI |   dim_products created.
+2026-07-24 20:40:51 | INFO | BI | CALL a function to create dim_stores........
+2026-07-24 20:40:51 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 20:40:51 | INFO | BI | START create stores dimension table....
+2026-07-24 20:40:51 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 20:40:51 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_stores
+2026-07-24 20:40:51 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 20:40:51 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 20:40:51 | INFO | BI | - Every table should have one primary key column
+2026-07-24 20:40:51 | INFO | BI | - store_id is the primary key and should be an INTEGER
+2026-07-24 20:40:51 | INFO | BI | - store_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 20:40:51 | INFO | BI | - store_location is text so we use VARCHAR (variable number of characters)
+2026-07-24 20:40:51 | INFO | BI |   dim_stores created.
+2026-07-24 20:40:51 | INFO | BI | CALL a function to create dim_campaigns........
+2026-07-24 20:40:51 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 20:40:51 | INFO | BI | START create campaigns dimension table....
+2026-07-24 20:40:51 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 20:40:51 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_campaigns
+2026-07-24 20:40:51 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 20:40:51 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 20:40:51 | INFO | BI | - Every table should have one primary key column
+2026-07-24 20:40:51 | INFO | BI | - campaign_id is the primary key and should be an INTEGER
+2026-07-24 20:40:51 | INFO | BI | - campaign_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 20:40:51 | INFO | BI | - campaign_type is text so we use VARCHAR (variable number of characters)
+2026-07-24 20:40:51 | INFO | BI |   dim_campaigns created.
+2026-07-24 20:40:51 | INFO | BI | CALL a function to create fact_sales........
+2026-07-24 20:40:51 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 20:40:51 | INFO | BI | START create sales fact table....
+2026-07-24 20:40:51 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 20:40:51 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS fact_sales
+2026-07-24 20:40:51 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 20:40:51 | INFO | BI | The fact table references the dimension tables
+2026-07-24 20:40:51 | INFO | BI |    - use a foreign key to dim_customers(customer_id)
+2026-07-24 20:40:51 | INFO | BI |    - use a foreign key to dim_products(product_id)
+2026-07-24 20:40:51 | INFO | BI |    - use a foreign key to dim_stores(store_id)
+2026-07-24 20:40:51 | INFO | BI |    - use a foreign key to dim_campaigns(campaign_id)
+2026-07-24 20:40:51 | INFO | BI |    - the REFERENCES keyword ensures referential integrity
+2026-07-24 20:40:51 | INFO | BI |    - every sale must link to a valid customer,product,store type and campaign type
+2026-07-24 20:40:51 | INFO | BI |  sales_amount should be a DOUBLE column
+2026-07-24 20:40:51 | INFO | BI |  transaction_time_minutes should be an INTEGER column
+2026-07-24 20:40:51 | INFO | BI |   fact_sales created.
+2026-07-24 20:40:51 | INFO | BI | CALL a function to verify the schema........
+2026-07-24 20:40:51 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 20:40:51 | INFO | BI | START verify warehouse schema....
+2026-07-24 20:40:51 | INFO | BI | SHOW TABLES returns a list of all tables in the database
+2026-07-24 20:40:51 | INFO | BI | - Calling .fetchall() on the result of SHOW TABLES
+2026-07-24 20:40:51 | INFO | BI | - Gets the result - we can store it in a variable named 'tables'
+2026-07-24 20:40:51 | INFO | BI |   - Retrieved tables from the warehouse.
+2026-07-24 20:40:51 | INFO | BI |  - tables has a tuple for each table in the warehouse
+2026-07-24 20:40:51 | INFO | BI |  - the first tuple element (at the 0 index) is the table name
+2026-07-24 20:40:51 | INFO | BI |   Tables in warehouse: ['dim_campaigns', 'dim_customers', 'dim_products', 'dim_stores', 'fact_sales']
+2026-07-24 20:40:51 | INFO | BI | Workflow 1-CREATE DW complete
+2026-07-24 20:40:51 | INFO | BI | ========================
+2026-07-24 20:40:51 | INFO | BI | Executed successfully!
+2026-07-24 20:40:51 | INFO | BI | ========================
+2026-07-24 21:12:17 | INFO | BI | === RUN START ===
+2026-07-24 21:12:17 | INFO | BI | project=BI
+2026-07-24 21:12:17 | INFO | BI | repo_dir=bintel-04-warehouse
+2026-07-24 21:12:17 | INFO | BI | python=3.14.6
+2026-07-24 21:12:17 | INFO | BI | os=Windows 11
+2026-07-24 21:12:17 | INFO | BI | shell=powershell
+2026-07-24 21:12:17 | INFO | BI | cwd=.
+2026-07-24 21:12:17 | INFO | BI | github_actions=False
+2026-07-24 21:12:17 | INFO | BI | ========================
+2026-07-24 21:12:17 | INFO | BI | START main()
+2026-07-24 21:12:17 | INFO | BI | ========================
+2026-07-24 21:12:17 | INFO | BI | Prepared data: = data\prepared_2
+2026-07-24 21:12:17 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-24 21:12:17 | INFO | BI | CALL a function to load each prepared dataset.............
+2026-07-24 21:12:17 | INFO | BI | Loading customers prepared from data\prepared_2\customers_data_prepared.csv
+2026-07-24 21:12:17 | INFO | BI | Loaded: 200 rows, 7 columns
+2026-07-24 21:12:17 | INFO | BI | Loading products prepared from data\prepared_2\products_data_prepared.csv
+2026-07-24 21:12:17 | INFO | BI | Loaded: 99 rows, 7 columns
+2026-07-24 21:12:17 | INFO | BI | Loading sales prepared from data\prepared_2\sales_data_prepared.csv
+2026-07-24 21:12:17 | INFO | BI | Loaded: 2207 rows, 8 columns
+2026-07-24 21:12:17 | INFO | BI | Loading stores prepared from data\prepared_2\stores_data_prepared.csv
+2026-07-24 21:12:17 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:12:17 | INFO | BI | Loading campaigns prepared from data\prepared_2\campaigns_data_prepared.csv
+2026-07-24 21:12:17 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:12:17 | INFO | BI | ========================
+2026-07-24 21:12:17 | INFO | BI | ROW COUNTS BEFORE LOAD
+2026-07-24 21:12:17 | INFO | BI | ========================
+2026-07-24 21:12:17 | INFO | BI |   Customers: 200 rows
+2026-07-24 21:12:17 | INFO | BI |   Products:  99 rows
+2026-07-24 21:12:17 | INFO | BI |   Sales:     2207 rows
+2026-07-24 21:12:17 | INFO | BI |   Stores:    4 rows
+2026-07-24 21:12:17 | INFO | BI |   Campaigns: 4 rows
+2026-07-24 21:12:17 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-24 21:12:49 | INFO | BI | === RUN START ===
+2026-07-24 21:12:49 | INFO | BI | project=BI
+2026-07-24 21:12:49 | INFO | BI | repo_dir=bintel-04-warehouse
+2026-07-24 21:12:49 | INFO | BI | python=3.14.6
+2026-07-24 21:12:49 | INFO | BI | os=Windows 11
+2026-07-24 21:12:49 | INFO | BI | shell=powershell
+2026-07-24 21:12:49 | INFO | BI | cwd=.
+2026-07-24 21:12:49 | INFO | BI | github_actions=False
+2026-07-24 21:12:49 | INFO | BI | ========================
+2026-07-24 21:12:49 | INFO | BI | START main()
+2026-07-24 21:12:49 | INFO | BI | ========================
+2026-07-24 21:12:49 | INFO | BI | Prepared data: = data\prepared_2
+2026-07-24 21:12:49 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-24 21:12:49 | INFO | BI | CALL a function to load each prepared dataset.............
+2026-07-24 21:12:49 | INFO | BI | Loading customers prepared from data\prepared_2\customers_data_prepared.csv
+2026-07-24 21:12:49 | INFO | BI | Loaded: 200 rows, 7 columns
+2026-07-24 21:12:49 | INFO | BI | Loading products prepared from data\prepared_2\products_data_prepared.csv
+2026-07-24 21:12:49 | INFO | BI | Loaded: 99 rows, 7 columns
+2026-07-24 21:12:49 | INFO | BI | Loading sales prepared from data\prepared_2\sales_data_prepared.csv
+2026-07-24 21:12:49 | INFO | BI | Loaded: 2207 rows, 8 columns
+2026-07-24 21:12:49 | INFO | BI | Loading stores prepared from data\prepared_2\stores_data_prepared.csv
+2026-07-24 21:12:49 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:12:49 | INFO | BI | Loading campaigns prepared from data\prepared_2\campaigns_data_prepared.csv
+2026-07-24 21:12:49 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:12:49 | INFO | BI | ========================
+2026-07-24 21:12:49 | INFO | BI | ROW COUNTS BEFORE LOAD
+2026-07-24 21:12:49 | INFO | BI | ========================
+2026-07-24 21:12:49 | INFO | BI |   Customers: 200 rows
+2026-07-24 21:12:49 | INFO | BI |   Products:  99 rows
+2026-07-24 21:12:49 | INFO | BI |   Sales:     2207 rows
+2026-07-24 21:12:49 | INFO | BI |   Stores:    4 rows
+2026-07-24 21:12:49 | INFO | BI |   Campaigns: 4 rows
+2026-07-24 21:12:49 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-24 21:12:49 | INFO | BI | CALL a function to load customers........
+2026-07-24 21:12:49 | INFO | BI | Loading customers into dim_customers
+2026-07-24 21:14:21 | INFO | BI | === RUN START ===
+2026-07-24 21:14:21 | INFO | BI | project=BI
+2026-07-24 21:14:21 | INFO | BI | repo_dir=bintel-04-warehouse
+2026-07-24 21:14:21 | INFO | BI | python=3.14.6
+2026-07-24 21:14:21 | INFO | BI | os=Windows 11
+2026-07-24 21:14:21 | INFO | BI | shell=powershell
+2026-07-24 21:14:21 | INFO | BI | cwd=.
+2026-07-24 21:14:21 | INFO | BI | github_actions=False
+2026-07-24 21:14:21 | INFO | BI | ========================
+2026-07-24 21:14:21 | INFO | BI | START main()
+2026-07-24 21:14:21 | INFO | BI | ========================
+2026-07-24 21:14:21 | INFO | BI | Prepared data: = data\prepared_2
+2026-07-24 21:14:21 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-24 21:14:21 | INFO | BI | CALL a function to load each prepared dataset.............
+2026-07-24 21:14:21 | INFO | BI | Loading customers prepared from data\prepared_2\customers_data_prepared.csv
+2026-07-24 21:14:21 | INFO | BI | Loaded: 200 rows, 7 columns
+2026-07-24 21:14:21 | INFO | BI | Loading products prepared from data\prepared_2\products_data_prepared.csv
+2026-07-24 21:14:21 | INFO | BI | Loaded: 99 rows, 7 columns
+2026-07-24 21:14:21 | INFO | BI | Loading sales prepared from data\prepared_2\sales_data_prepared.csv
+2026-07-24 21:14:21 | INFO | BI | Loaded: 2207 rows, 8 columns
+2026-07-24 21:14:21 | INFO | BI | Loading stores prepared from data\prepared_2\stores_data_prepared.csv
+2026-07-24 21:14:21 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:14:21 | INFO | BI | Loading campaigns prepared from data\prepared_2\campaigns_data_prepared.csv
+2026-07-24 21:14:21 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:14:21 | INFO | BI | ========================
+2026-07-24 21:14:21 | INFO | BI | ROW COUNTS BEFORE LOAD
+2026-07-24 21:14:21 | INFO | BI | ========================
+2026-07-24 21:14:21 | INFO | BI |   Customers: 200 rows
+2026-07-24 21:14:21 | INFO | BI |   Products:  99 rows
+2026-07-24 21:14:21 | INFO | BI |   Sales:     2207 rows
+2026-07-24 21:14:21 | INFO | BI |   Stores:    4 rows
+2026-07-24 21:14:21 | INFO | BI |   Campaigns: 4 rows
+2026-07-24 21:14:21 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-24 21:14:21 | INFO | BI | CALL a function to load customers........
+2026-07-24 21:14:21 | INFO | BI | Loading customers into dim_customers
+2026-07-24 21:14:21 | INFO | BI |   Loaded 200 rows into dim_customers
+2026-07-24 21:14:21 | INFO | BI | CALL a function to load products........
+2026-07-24 21:14:21 | INFO | BI | Loading products into dim_products
+2026-07-24 21:16:39 | INFO | BI | === RUN START ===
+2026-07-24 21:16:39 | INFO | BI | project=BI
+2026-07-24 21:16:39 | INFO | BI | repo_dir=bintel-04-warehouse
+2026-07-24 21:16:39 | INFO | BI | python=3.14.6
+2026-07-24 21:16:39 | INFO | BI | os=Windows 11
+2026-07-24 21:16:39 | INFO | BI | shell=powershell
+2026-07-24 21:16:39 | INFO | BI | cwd=.
+2026-07-24 21:16:39 | INFO | BI | github_actions=False
+2026-07-24 21:16:39 | INFO | BI | ========================
+2026-07-24 21:16:39 | INFO | BI | START main()
+2026-07-24 21:16:39 | INFO | BI | ========================
+2026-07-24 21:16:39 | INFO | BI | Prepared data: = data\prepared_2
+2026-07-24 21:16:39 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-24 21:16:39 | INFO | BI | CALL a function to load each prepared dataset.............
+2026-07-24 21:16:39 | INFO | BI | Loading customers prepared from data\prepared_2\customers_data_prepared.csv
+2026-07-24 21:16:39 | INFO | BI | Loaded: 200 rows, 7 columns
+2026-07-24 21:16:39 | INFO | BI | Loading products prepared from data\prepared_2\products_data_prepared.csv
+2026-07-24 21:16:39 | INFO | BI | Loaded: 99 rows, 7 columns
+2026-07-24 21:16:39 | INFO | BI | Loading sales prepared from data\prepared_2\sales_data_prepared.csv
+2026-07-24 21:16:39 | INFO | BI | Loaded: 2207 rows, 8 columns
+2026-07-24 21:16:39 | INFO | BI | Loading stores prepared from data\prepared_2\stores_data_prepared.csv
+2026-07-24 21:16:39 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:16:39 | INFO | BI | Loading campaigns prepared from data\prepared_2\campaigns_data_prepared.csv
+2026-07-24 21:16:39 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:16:39 | INFO | BI | ========================
+2026-07-24 21:16:39 | INFO | BI | ROW COUNTS BEFORE LOAD
+2026-07-24 21:16:39 | INFO | BI | ========================
+2026-07-24 21:16:39 | INFO | BI |   Customers: 200 rows
+2026-07-24 21:16:39 | INFO | BI |   Products:  99 rows
+2026-07-24 21:16:39 | INFO | BI |   Sales:     2207 rows
+2026-07-24 21:16:39 | INFO | BI |   Stores:    4 rows
+2026-07-24 21:16:39 | INFO | BI |   Campaigns: 4 rows
+2026-07-24 21:16:39 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-24 21:16:39 | INFO | BI | CALL a function to load customers........
+2026-07-24 21:16:39 | INFO | BI | Loading customers into dim_customers
+2026-07-24 21:20:10 | INFO | BI | === RUN START ===
+2026-07-24 21:20:10 | INFO | BI | project=BI
+2026-07-24 21:20:10 | INFO | BI | repo_dir=bintel-04-warehouse
+2026-07-24 21:20:10 | INFO | BI | python=3.14.6
+2026-07-24 21:20:10 | INFO | BI | os=Windows 11
+2026-07-24 21:20:10 | INFO | BI | shell=powershell
+2026-07-24 21:20:10 | INFO | BI | cwd=.
+2026-07-24 21:20:10 | INFO | BI | github_actions=False
+2026-07-24 21:20:10 | INFO | BI | ========================
+2026-07-24 21:20:10 | INFO | BI | START main()
+2026-07-24 21:20:10 | INFO | BI | ========================
+2026-07-24 21:20:10 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-24 21:20:10 | INFO | BI | Create the artifacts/ folder if it does not exist
+2026-07-24 21:20:10 | INFO | BI | Connect to DuckDB - creates the file if it does not exist
+2026-07-24 21:20:10 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-24 21:20:10 | INFO | BI | Created conn: a DuckDB connection object
+2026-07-24 21:20:10 | INFO | BI | CALL a function to delete tables in reverse order of creation
+2026-07-24 21:20:10 | INFO | BI | START delete tables....
+2026-07-24 21:20:10 | INFO | BI | - Dropping fact_sales table if it exists
+2026-07-24 21:20:10 | INFO | BI | - Dropping dim_products table if it exists
+2026-07-24 21:20:10 | INFO | BI | - Dropping dim_customers table if it exists
+2026-07-24 21:20:10 | INFO | BI | - Dropping dim_stores table if it exists
+2026-07-24 21:20:10 | INFO | BI | - Dropping dim_campaigns table if it exists
+2026-07-24 21:20:10 | INFO | BI |   All tables deleted.
+2026-07-24 21:20:10 | INFO | BI | CALL a function to create dim_customers........
+2026-07-24 21:20:10 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:20:10 | INFO | BI | START create customers dimension table....
+2026-07-24 21:20:10 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:20:10 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_customers
+2026-07-24 21:20:10 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:20:10 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:20:10 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:20:10 | INFO | BI | - Look at the data to decide suitable column types
+2026-07-24 21:20:10 | INFO | BI | - customer_id is the primary key and should be an INTEGER
+2026-07-24 21:20:10 | INFO | BI | - first_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:10 | INFO | BI | - last_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:10 | INFO | BI | - region is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:10 | INFO | BI | - join_date should be a DATE column
+2026-07-24 21:20:10 | INFO | BI | - customer_type is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:10 | INFO | BI | - customer_tenure_years is an INTEGER column
+2026-07-24 21:20:10 | INFO | BI |   dim_customers created.
+2026-07-24 21:20:10 | INFO | BI | CALL a function to create dim_products........
+2026-07-24 21:20:10 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:20:10 | INFO | BI | START create products dimension table....
+2026-07-24 21:20:10 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:20:10 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_products
+2026-07-24 21:20:10 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:20:10 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:20:10 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:20:10 | INFO | BI | - Look at the data to decide suitable column types
+2026-07-24 21:20:10 | INFO | BI | - product_id is the primary key and should be an INTEGER
+2026-07-24 21:20:10 | INFO | BI | - category is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:10 | INFO | BI | - name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:10 | INFO | BI | - unit_price should be a DOUBLE column
+2026-07-24 21:20:10 | INFO | BI | - unit_cost should be a DOUBLE column
+2026-07-24 21:20:10 | INFO | BI | - average_quality_rating should be a INT column
+2026-07-24 21:20:10 | INFO | BI | - quality_rating is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:10 | INFO | BI |   dim_products created.
+2026-07-24 21:20:10 | INFO | BI | CALL a function to create dim_stores........
+2026-07-24 21:20:10 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:20:10 | INFO | BI | START create stores dimension table....
+2026-07-24 21:20:10 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:20:10 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_stores
+2026-07-24 21:20:10 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:20:10 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:20:10 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:20:10 | INFO | BI | - store_id is the primary key and should be an INTEGER
+2026-07-24 21:20:10 | INFO | BI | - store_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:10 | INFO | BI | - store_location is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:10 | INFO | BI |   dim_stores created.
+2026-07-24 21:20:10 | INFO | BI | CALL a function to create dim_campaigns........
+2026-07-24 21:20:10 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:20:10 | INFO | BI | START create campaigns dimension table....
+2026-07-24 21:20:10 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:20:10 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_campaigns
+2026-07-24 21:20:10 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:20:10 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:20:10 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:20:10 | INFO | BI | - campaign_id is the primary key and should be an INTEGER
+2026-07-24 21:20:10 | INFO | BI | - campaign_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:10 | INFO | BI | - campaign_type is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:10 | INFO | BI |   dim_campaigns created.
+2026-07-24 21:20:10 | INFO | BI | CALL a function to create fact_sales........
+2026-07-24 21:20:10 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:20:10 | INFO | BI | START create sales fact table....
+2026-07-24 21:20:10 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:20:10 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS fact_sales
+2026-07-24 21:20:10 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:20:10 | INFO | BI | The fact table references the dimension tables
+2026-07-24 21:20:10 | INFO | BI |    - use a foreign key to dim_customers(customer_id)
+2026-07-24 21:20:10 | INFO | BI |    - use a foreign key to dim_products(product_id)
+2026-07-24 21:20:10 | INFO | BI |    - use a foreign key to dim_stores(store_id)
+2026-07-24 21:20:10 | INFO | BI |    - use a foreign key to dim_campaigns(campaign_id)
+2026-07-24 21:20:10 | INFO | BI |    - the REFERENCES keyword ensures referential integrity
+2026-07-24 21:20:10 | INFO | BI |    - every sale must link to a valid customer,product,store type and campaign type
+2026-07-24 21:20:10 | INFO | BI |  sales_amount should be a DOUBLE column
+2026-07-24 21:20:10 | INFO | BI |  transaction_time_minutes should be an INTEGER column
+2026-07-24 21:20:10 | INFO | BI |   fact_sales created.
+2026-07-24 21:20:10 | INFO | BI | CALL a function to verify the schema........
+2026-07-24 21:20:10 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:20:10 | INFO | BI | START verify warehouse schema....
+2026-07-24 21:20:10 | INFO | BI | SHOW TABLES returns a list of all tables in the database
+2026-07-24 21:20:10 | INFO | BI | - Calling .fetchall() on the result of SHOW TABLES
+2026-07-24 21:20:10 | INFO | BI | - Gets the result - we can store it in a variable named 'tables'
+2026-07-24 21:20:10 | INFO | BI |   - Retrieved tables from the warehouse.
+2026-07-24 21:20:10 | INFO | BI |  - tables has a tuple for each table in the warehouse
+2026-07-24 21:20:10 | INFO | BI |  - the first tuple element (at the 0 index) is the table name
+2026-07-24 21:20:10 | INFO | BI |   Tables in warehouse: ['dim_campaigns', 'dim_customers', 'dim_products', 'dim_stores', 'fact_sales']
+2026-07-24 21:20:10 | INFO | BI | Workflow 1-CREATE DW complete
+2026-07-24 21:20:10 | INFO | BI | ========================
+2026-07-24 21:20:10 | INFO | BI | Executed successfully!
+2026-07-24 21:20:10 | INFO | BI | ========================
+2026-07-24 21:20:18 | INFO | BI | === RUN START ===
+2026-07-24 21:20:18 | INFO | BI | project=BI
+2026-07-24 21:20:18 | INFO | BI | repo_dir=bintel-04-warehouse
+2026-07-24 21:20:18 | INFO | BI | python=3.14.6
+2026-07-24 21:20:18 | INFO | BI | os=Windows 11
+2026-07-24 21:20:18 | INFO | BI | shell=powershell
+2026-07-24 21:20:18 | INFO | BI | cwd=.
+2026-07-24 21:20:18 | INFO | BI | github_actions=False
+2026-07-24 21:20:18 | INFO | BI | ========================
+2026-07-24 21:20:18 | INFO | BI | START main()
+2026-07-24 21:20:18 | INFO | BI | ========================
+2026-07-24 21:20:18 | INFO | BI | Prepared data: = data\prepared_2
+2026-07-24 21:20:18 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-24 21:20:18 | INFO | BI | CALL a function to load each prepared dataset.............
+2026-07-24 21:20:18 | INFO | BI | Loading customers prepared from data\prepared_2\customers_data_prepared.csv
+2026-07-24 21:20:18 | INFO | BI | Loaded: 200 rows, 7 columns
+2026-07-24 21:20:18 | INFO | BI | Loading products prepared from data\prepared_2\products_data_prepared.csv
+2026-07-24 21:20:18 | INFO | BI | Loaded: 99 rows, 7 columns
+2026-07-24 21:20:18 | INFO | BI | Loading sales prepared from data\prepared_2\sales_data_prepared.csv
+2026-07-24 21:20:18 | INFO | BI | Loaded: 2207 rows, 8 columns
+2026-07-24 21:20:18 | INFO | BI | Loading stores prepared from data\prepared_2\stores_data_prepared.csv
+2026-07-24 21:20:18 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:20:18 | INFO | BI | Loading campaigns prepared from data\prepared_2\campaigns_data_prepared.csv
+2026-07-24 21:20:18 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:20:18 | INFO | BI | ========================
+2026-07-24 21:20:18 | INFO | BI | ROW COUNTS BEFORE LOAD
+2026-07-24 21:20:18 | INFO | BI | ========================
+2026-07-24 21:20:18 | INFO | BI |   Customers: 200 rows
+2026-07-24 21:20:18 | INFO | BI |   Products:  99 rows
+2026-07-24 21:20:18 | INFO | BI |   Sales:     2207 rows
+2026-07-24 21:20:18 | INFO | BI |   Stores:    4 rows
+2026-07-24 21:20:18 | INFO | BI |   Campaigns: 4 rows
+2026-07-24 21:20:18 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-24 21:20:18 | INFO | BI | CALL a function to load customers........
+2026-07-24 21:20:18 | INFO | BI | Loading customers into dim_customers
+2026-07-24 21:20:18 | INFO | BI |   Loaded 200 rows into dim_customers
+2026-07-24 21:20:18 | INFO | BI | CALL a function to load products........
+2026-07-24 21:20:18 | INFO | BI | Loading products into dim_products
+2026-07-24 21:20:57 | INFO | BI | === RUN START ===
+2026-07-24 21:20:57 | INFO | BI | project=BI
+2026-07-24 21:20:57 | INFO | BI | repo_dir=bintel-04-warehouse
+2026-07-24 21:20:57 | INFO | BI | python=3.14.6
+2026-07-24 21:20:57 | INFO | BI | os=Windows 11
+2026-07-24 21:20:57 | INFO | BI | shell=powershell
+2026-07-24 21:20:57 | INFO | BI | cwd=.
+2026-07-24 21:20:57 | INFO | BI | github_actions=False
+2026-07-24 21:20:57 | INFO | BI | ========================
+2026-07-24 21:20:57 | INFO | BI | START main()
+2026-07-24 21:20:57 | INFO | BI | ========================
+2026-07-24 21:20:57 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-24 21:20:57 | INFO | BI | Create the artifacts/ folder if it does not exist
+2026-07-24 21:20:57 | INFO | BI | Connect to DuckDB - creates the file if it does not exist
+2026-07-24 21:20:57 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-24 21:20:57 | INFO | BI | Created conn: a DuckDB connection object
+2026-07-24 21:20:57 | INFO | BI | CALL a function to delete tables in reverse order of creation
+2026-07-24 21:20:57 | INFO | BI | START delete tables....
+2026-07-24 21:20:57 | INFO | BI | - Dropping fact_sales table if it exists
+2026-07-24 21:20:57 | INFO | BI | - Dropping dim_products table if it exists
+2026-07-24 21:20:57 | INFO | BI | - Dropping dim_customers table if it exists
+2026-07-24 21:20:57 | INFO | BI | - Dropping dim_stores table if it exists
+2026-07-24 21:20:57 | INFO | BI | - Dropping dim_campaigns table if it exists
+2026-07-24 21:20:57 | INFO | BI |   All tables deleted.
+2026-07-24 21:20:57 | INFO | BI | CALL a function to create dim_customers........
+2026-07-24 21:20:57 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:20:57 | INFO | BI | START create customers dimension table....
+2026-07-24 21:20:57 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:20:57 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_customers
+2026-07-24 21:20:57 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:20:57 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:20:57 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:20:57 | INFO | BI | - Look at the data to decide suitable column types
+2026-07-24 21:20:57 | INFO | BI | - customer_id is the primary key and should be an INTEGER
+2026-07-24 21:20:57 | INFO | BI | - first_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:57 | INFO | BI | - last_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:57 | INFO | BI | - region is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:57 | INFO | BI | - join_date should be a DATE column
+2026-07-24 21:20:57 | INFO | BI | - customer_type is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:57 | INFO | BI | - customer_tenure_years is an INTEGER column
+2026-07-24 21:20:57 | INFO | BI |   dim_customers created.
+2026-07-24 21:20:57 | INFO | BI | CALL a function to create dim_products........
+2026-07-24 21:20:57 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:20:57 | INFO | BI | START create products dimension table....
+2026-07-24 21:20:57 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:20:57 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_products
+2026-07-24 21:20:57 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:20:57 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:20:57 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:20:57 | INFO | BI | - Look at the data to decide suitable column types
+2026-07-24 21:20:57 | INFO | BI | - product_id is the primary key and should be an INTEGER
+2026-07-24 21:20:57 | INFO | BI | - category is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:57 | INFO | BI | - name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:57 | INFO | BI | - unit_price should be a DOUBLE column
+2026-07-24 21:20:57 | INFO | BI | - unit_cost should be a DOUBLE column
+2026-07-24 21:20:57 | INFO | BI | - average_quality_rating should be a INT column
+2026-07-24 21:20:57 | INFO | BI | - quality_rating is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:57 | INFO | BI |   dim_products created.
+2026-07-24 21:20:57 | INFO | BI | CALL a function to create dim_stores........
+2026-07-24 21:20:57 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:20:57 | INFO | BI | START create stores dimension table....
+2026-07-24 21:20:57 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:20:57 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_stores
+2026-07-24 21:20:57 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:20:57 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:20:57 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:20:57 | INFO | BI | - store_id is the primary key and should be an INTEGER
+2026-07-24 21:20:57 | INFO | BI | - store_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:57 | INFO | BI | - store_location is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:57 | INFO | BI |   dim_stores created.
+2026-07-24 21:20:57 | INFO | BI | CALL a function to create dim_campaigns........
+2026-07-24 21:20:57 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:20:57 | INFO | BI | START create campaigns dimension table....
+2026-07-24 21:20:57 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:20:57 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_campaigns
+2026-07-24 21:20:57 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:20:57 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:20:57 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:20:57 | INFO | BI | - campaign_id is the primary key and should be an INTEGER
+2026-07-24 21:20:57 | INFO | BI | - campaign_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:57 | INFO | BI | - campaign_type is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:20:57 | INFO | BI |   dim_campaigns created.
+2026-07-24 21:20:57 | INFO | BI | CALL a function to create fact_sales........
+2026-07-24 21:20:57 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:20:57 | INFO | BI | START create sales fact table....
+2026-07-24 21:20:57 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:20:57 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS fact_sales
+2026-07-24 21:20:57 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:20:57 | INFO | BI | The fact table references the dimension tables
+2026-07-24 21:20:57 | INFO | BI |    - use a foreign key to dim_customers(customer_id)
+2026-07-24 21:20:57 | INFO | BI |    - use a foreign key to dim_products(product_id)
+2026-07-24 21:20:57 | INFO | BI |    - use a foreign key to dim_stores(store_id)
+2026-07-24 21:20:57 | INFO | BI |    - use a foreign key to dim_campaigns(campaign_id)
+2026-07-24 21:20:57 | INFO | BI |    - the REFERENCES keyword ensures referential integrity
+2026-07-24 21:20:57 | INFO | BI |    - every sale must link to a valid customer,product,store type and campaign type
+2026-07-24 21:20:57 | INFO | BI |  sales_amount should be a DOUBLE column
+2026-07-24 21:20:57 | INFO | BI |  transaction_time_minutes should be an INTEGER column
+2026-07-24 21:20:57 | INFO | BI |   fact_sales created.
+2026-07-24 21:20:57 | INFO | BI | CALL a function to verify the schema........
+2026-07-24 21:20:57 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:20:57 | INFO | BI | START verify warehouse schema....
+2026-07-24 21:20:57 | INFO | BI | SHOW TABLES returns a list of all tables in the database
+2026-07-24 21:20:57 | INFO | BI | - Calling .fetchall() on the result of SHOW TABLES
+2026-07-24 21:20:57 | INFO | BI | - Gets the result - we can store it in a variable named 'tables'
+2026-07-24 21:20:57 | INFO | BI |   - Retrieved tables from the warehouse.
+2026-07-24 21:20:57 | INFO | BI |  - tables has a tuple for each table in the warehouse
+2026-07-24 21:20:57 | INFO | BI |  - the first tuple element (at the 0 index) is the table name
+2026-07-24 21:20:57 | INFO | BI |   Tables in warehouse: ['dim_campaigns', 'dim_customers', 'dim_products', 'dim_stores', 'fact_sales']
+2026-07-24 21:20:57 | INFO | BI | Workflow 1-CREATE DW complete
+2026-07-24 21:20:57 | INFO | BI | ========================
+2026-07-24 21:20:57 | INFO | BI | Executed successfully!
+2026-07-24 21:20:57 | INFO | BI | ========================
+2026-07-24 21:21:04 | INFO | BI | === RUN START ===
+2026-07-24 21:21:04 | INFO | BI | project=BI
+2026-07-24 21:21:04 | INFO | BI | repo_dir=bintel-04-warehouse
+2026-07-24 21:21:04 | INFO | BI | python=3.14.6
+2026-07-24 21:21:04 | INFO | BI | os=Windows 11
+2026-07-24 21:21:04 | INFO | BI | shell=powershell
+2026-07-24 21:21:04 | INFO | BI | cwd=.
+2026-07-24 21:21:04 | INFO | BI | github_actions=False
+2026-07-24 21:21:04 | INFO | BI | ========================
+2026-07-24 21:21:04 | INFO | BI | START main()
+2026-07-24 21:21:04 | INFO | BI | ========================
+2026-07-24 21:21:04 | INFO | BI | Prepared data: = data\prepared_2
+2026-07-24 21:21:04 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-24 21:21:04 | INFO | BI | CALL a function to load each prepared dataset.............
+2026-07-24 21:21:04 | INFO | BI | Loading customers prepared from data\prepared_2\customers_data_prepared.csv
+2026-07-24 21:21:04 | INFO | BI | Loaded: 200 rows, 7 columns
+2026-07-24 21:21:04 | INFO | BI | Loading products prepared from data\prepared_2\products_data_prepared.csv
+2026-07-24 21:21:04 | INFO | BI | Loaded: 99 rows, 7 columns
+2026-07-24 21:21:04 | INFO | BI | Loading sales prepared from data\prepared_2\sales_data_prepared.csv
+2026-07-24 21:21:04 | INFO | BI | Loaded: 2207 rows, 8 columns
+2026-07-24 21:21:04 | INFO | BI | Loading stores prepared from data\prepared_2\stores_data_prepared.csv
+2026-07-24 21:21:04 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:21:04 | INFO | BI | Loading campaigns prepared from data\prepared_2\campaigns_data_prepared.csv
+2026-07-24 21:21:04 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:21:04 | INFO | BI | ========================
+2026-07-24 21:21:04 | INFO | BI | ROW COUNTS BEFORE LOAD
+2026-07-24 21:21:04 | INFO | BI | ========================
+2026-07-24 21:21:04 | INFO | BI |   Customers: 200 rows
+2026-07-24 21:21:04 | INFO | BI |   Products:  99 rows
+2026-07-24 21:21:04 | INFO | BI |   Sales:     2207 rows
+2026-07-24 21:21:04 | INFO | BI |   Stores:    4 rows
+2026-07-24 21:21:04 | INFO | BI |   Campaigns: 4 rows
+2026-07-24 21:21:04 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-24 21:21:04 | INFO | BI | CALL a function to load customers........
+2026-07-24 21:21:04 | INFO | BI | Loading customers into dim_customers
+2026-07-24 21:21:04 | INFO | BI |   Loaded 200 rows into dim_customers
+2026-07-24 21:21:04 | INFO | BI | CALL a function to load products........
+2026-07-24 21:21:04 | INFO | BI | Loading products into dim_products
+2026-07-24 21:21:04 | INFO | BI |   Loaded 99 rows into dim_products
+2026-07-24 21:21:04 | INFO | BI | CALL a function to load stores........
+2026-07-24 21:21:04 | INFO | BI | Loading stores into dim_stores
+2026-07-24 21:23:37 | INFO | BI | === RUN START ===
+2026-07-24 21:23:37 | INFO | BI | project=BI
+2026-07-24 21:23:37 | INFO | BI | repo_dir=bintel-04-warehouse
+2026-07-24 21:23:37 | INFO | BI | python=3.14.6
+2026-07-24 21:23:37 | INFO | BI | os=Windows 11
+2026-07-24 21:23:37 | INFO | BI | shell=powershell
+2026-07-24 21:23:37 | INFO | BI | cwd=.
+2026-07-24 21:23:37 | INFO | BI | github_actions=False
+2026-07-24 21:23:37 | INFO | BI | ========================
+2026-07-24 21:23:37 | INFO | BI | START main()
+2026-07-24 21:23:37 | INFO | BI | ========================
+2026-07-24 21:23:37 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-24 21:23:37 | INFO | BI | Create the artifacts/ folder if it does not exist
+2026-07-24 21:23:37 | INFO | BI | Connect to DuckDB - creates the file if it does not exist
+2026-07-24 21:23:37 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-24 21:23:37 | INFO | BI | Created conn: a DuckDB connection object
+2026-07-24 21:23:37 | INFO | BI | CALL a function to delete tables in reverse order of creation
+2026-07-24 21:23:37 | INFO | BI | START delete tables....
+2026-07-24 21:23:37 | INFO | BI | - Dropping fact_sales table if it exists
+2026-07-24 21:23:37 | INFO | BI | - Dropping dim_products table if it exists
+2026-07-24 21:23:37 | INFO | BI | - Dropping dim_customers table if it exists
+2026-07-24 21:23:37 | INFO | BI | - Dropping dim_stores table if it exists
+2026-07-24 21:23:37 | INFO | BI | - Dropping dim_campaigns table if it exists
+2026-07-24 21:23:37 | INFO | BI |   All tables deleted.
+2026-07-24 21:23:37 | INFO | BI | CALL a function to create dim_customers........
+2026-07-24 21:23:37 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:23:37 | INFO | BI | START create customers dimension table....
+2026-07-24 21:23:37 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:23:37 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_customers
+2026-07-24 21:23:37 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:23:37 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:23:37 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:23:37 | INFO | BI | - Look at the data to decide suitable column types
+2026-07-24 21:23:37 | INFO | BI | - customer_id is the primary key and should be an INTEGER
+2026-07-24 21:23:37 | INFO | BI | - first_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:23:37 | INFO | BI | - last_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:23:37 | INFO | BI | - region is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:23:37 | INFO | BI | - join_date should be a DATE column
+2026-07-24 21:23:37 | INFO | BI | - customer_type is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:23:37 | INFO | BI | - customer_tenure_years is an INTEGER column
+2026-07-24 21:23:38 | INFO | BI |   dim_customers created.
+2026-07-24 21:23:38 | INFO | BI | CALL a function to create dim_products........
+2026-07-24 21:23:38 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:23:38 | INFO | BI | START create products dimension table....
+2026-07-24 21:23:38 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:23:38 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_products
+2026-07-24 21:23:38 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:23:38 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:23:38 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:23:38 | INFO | BI | - Look at the data to decide suitable column types
+2026-07-24 21:23:38 | INFO | BI | - product_id is the primary key and should be an INTEGER
+2026-07-24 21:23:38 | INFO | BI | - category is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:23:38 | INFO | BI | - name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:23:38 | INFO | BI | - unit_price should be a DOUBLE column
+2026-07-24 21:23:38 | INFO | BI | - unit_cost should be a DOUBLE column
+2026-07-24 21:23:38 | INFO | BI | - average_quality_rating should be a INT column
+2026-07-24 21:23:38 | INFO | BI | - quality_rating is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:23:38 | INFO | BI |   dim_products created.
+2026-07-24 21:23:38 | INFO | BI | CALL a function to create dim_stores........
+2026-07-24 21:23:38 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:23:38 | INFO | BI | START create stores dimension table....
+2026-07-24 21:23:38 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:23:38 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_stores
+2026-07-24 21:23:38 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:23:38 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:23:38 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:23:38 | INFO | BI | - store_id is the primary key and should be an INTEGER
+2026-07-24 21:23:38 | INFO | BI | - store_type is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:23:38 | INFO | BI |   dim_stores created.
+2026-07-24 21:23:38 | INFO | BI | CALL a function to create dim_campaigns........
+2026-07-24 21:23:38 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:23:38 | INFO | BI | START create campaigns dimension table....
+2026-07-24 21:23:38 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:23:38 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_campaigns
+2026-07-24 21:23:38 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:23:38 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:23:38 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:23:38 | INFO | BI | - campaign_id is the primary key and should be an INTEGER
+2026-07-24 21:23:38 | INFO | BI | - campaign_type is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:23:38 | INFO | BI |   dim_campaigns created.
+2026-07-24 21:23:38 | INFO | BI | CALL a function to create fact_sales........
+2026-07-24 21:23:38 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:23:38 | INFO | BI | START create sales fact table....
+2026-07-24 21:23:38 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:23:38 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS fact_sales
+2026-07-24 21:23:38 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:23:38 | INFO | BI | The fact table references the dimension tables
+2026-07-24 21:23:38 | INFO | BI |    - use a foreign key to dim_customers(customer_id)
+2026-07-24 21:23:38 | INFO | BI |    - use a foreign key to dim_products(product_id)
+2026-07-24 21:23:38 | INFO | BI |    - use a foreign key to dim_stores(store_id)
+2026-07-24 21:23:38 | INFO | BI |    - use a foreign key to dim_campaigns(campaign_id)
+2026-07-24 21:23:38 | INFO | BI |    - the REFERENCES keyword ensures referential integrity
+2026-07-24 21:23:38 | INFO | BI |    - every sale must link to a valid customer,product,store type and campaign type
+2026-07-24 21:23:38 | INFO | BI |  sales_amount should be a DOUBLE column
+2026-07-24 21:23:38 | INFO | BI |  transaction_time_minutes should be an INTEGER column
+2026-07-24 21:23:38 | INFO | BI |   fact_sales created.
+2026-07-24 21:23:38 | INFO | BI | CALL a function to verify the schema........
+2026-07-24 21:23:38 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:23:38 | INFO | BI | START verify warehouse schema....
+2026-07-24 21:23:38 | INFO | BI | SHOW TABLES returns a list of all tables in the database
+2026-07-24 21:23:38 | INFO | BI | - Calling .fetchall() on the result of SHOW TABLES
+2026-07-24 21:23:38 | INFO | BI | - Gets the result - we can store it in a variable named 'tables'
+2026-07-24 21:23:38 | INFO | BI |   - Retrieved tables from the warehouse.
+2026-07-24 21:23:38 | INFO | BI |  - tables has a tuple for each table in the warehouse
+2026-07-24 21:23:38 | INFO | BI |  - the first tuple element (at the 0 index) is the table name
+2026-07-24 21:23:38 | INFO | BI |   Tables in warehouse: ['dim_campaigns', 'dim_customers', 'dim_products', 'dim_stores', 'fact_sales']
+2026-07-24 21:23:38 | INFO | BI | Workflow 1-CREATE DW complete
+2026-07-24 21:23:38 | INFO | BI | ========================
+2026-07-24 21:23:38 | INFO | BI | Executed successfully!
+2026-07-24 21:23:38 | INFO | BI | ========================
+2026-07-24 21:23:43 | INFO | BI | === RUN START ===
+2026-07-24 21:23:43 | INFO | BI | project=BI
+2026-07-24 21:23:43 | INFO | BI | repo_dir=bintel-04-warehouse
+2026-07-24 21:23:43 | INFO | BI | python=3.14.6
+2026-07-24 21:23:43 | INFO | BI | os=Windows 11
+2026-07-24 21:23:43 | INFO | BI | shell=powershell
+2026-07-24 21:23:43 | INFO | BI | cwd=.
+2026-07-24 21:23:43 | INFO | BI | github_actions=False
+2026-07-24 21:23:43 | INFO | BI | ========================
+2026-07-24 21:23:43 | INFO | BI | START main()
+2026-07-24 21:23:43 | INFO | BI | ========================
+2026-07-24 21:23:43 | INFO | BI | Prepared data: = data\prepared_2
+2026-07-24 21:23:43 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-24 21:23:43 | INFO | BI | CALL a function to load each prepared dataset.............
+2026-07-24 21:23:43 | INFO | BI | Loading customers prepared from data\prepared_2\customers_data_prepared.csv
+2026-07-24 21:23:43 | INFO | BI | Loaded: 200 rows, 7 columns
+2026-07-24 21:23:43 | INFO | BI | Loading products prepared from data\prepared_2\products_data_prepared.csv
+2026-07-24 21:23:43 | INFO | BI | Loaded: 99 rows, 7 columns
+2026-07-24 21:23:43 | INFO | BI | Loading sales prepared from data\prepared_2\sales_data_prepared.csv
+2026-07-24 21:23:43 | INFO | BI | Loaded: 2207 rows, 8 columns
+2026-07-24 21:23:43 | INFO | BI | Loading stores prepared from data\prepared_2\stores_data_prepared.csv
+2026-07-24 21:23:43 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:23:43 | INFO | BI | Loading campaigns prepared from data\prepared_2\campaigns_data_prepared.csv
+2026-07-24 21:23:43 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:23:43 | INFO | BI | ========================
+2026-07-24 21:23:43 | INFO | BI | ROW COUNTS BEFORE LOAD
+2026-07-24 21:23:43 | INFO | BI | ========================
+2026-07-24 21:23:43 | INFO | BI |   Customers: 200 rows
+2026-07-24 21:23:43 | INFO | BI |   Products:  99 rows
+2026-07-24 21:23:43 | INFO | BI |   Sales:     2207 rows
+2026-07-24 21:23:43 | INFO | BI |   Stores:    4 rows
+2026-07-24 21:23:43 | INFO | BI |   Campaigns: 4 rows
+2026-07-24 21:23:43 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-24 21:23:43 | INFO | BI | CALL a function to load customers........
+2026-07-24 21:23:43 | INFO | BI | Loading customers into dim_customers
+2026-07-24 21:23:43 | INFO | BI |   Loaded 200 rows into dim_customers
+2026-07-24 21:23:43 | INFO | BI | CALL a function to load products........
+2026-07-24 21:23:43 | INFO | BI | Loading products into dim_products
+2026-07-24 21:23:43 | INFO | BI |   Loaded 99 rows into dim_products
+2026-07-24 21:23:43 | INFO | BI | CALL a function to load stores........
+2026-07-24 21:23:43 | INFO | BI | Loading stores into dim_stores
+2026-07-24 21:23:43 | INFO | BI |   Loaded 4 rows into dim_stores
+2026-07-24 21:23:43 | INFO | BI | CALL a function to load campaigns........
+2026-07-24 21:23:43 | INFO | BI | Loading campaigns into dim_campaigns
+2026-07-24 21:23:43 | INFO | BI |   Loaded 4 rows into dim_campaigns
+2026-07-24 21:23:43 | INFO | BI | CALL a function to load sales........
+2026-07-24 21:23:43 | INFO | BI | Loading sales into fact_sales
+2026-07-24 21:25:03 | INFO | BI | === RUN START ===
+2026-07-24 21:25:03 | INFO | BI | project=BI
+2026-07-24 21:25:03 | INFO | BI | repo_dir=bintel-04-warehouse
+2026-07-24 21:25:03 | INFO | BI | python=3.14.6
+2026-07-24 21:25:03 | INFO | BI | os=Windows 11
+2026-07-24 21:25:03 | INFO | BI | shell=powershell
+2026-07-24 21:25:03 | INFO | BI | cwd=.
+2026-07-24 21:25:03 | INFO | BI | github_actions=False
+2026-07-24 21:25:03 | INFO | BI | ========================
+2026-07-24 21:25:03 | INFO | BI | START main()
+2026-07-24 21:25:03 | INFO | BI | ========================
+2026-07-24 21:25:03 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-24 21:25:03 | INFO | BI | Create the artifacts/ folder if it does not exist
+2026-07-24 21:25:03 | INFO | BI | Connect to DuckDB - creates the file if it does not exist
+2026-07-24 21:25:03 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-24 21:25:03 | INFO | BI | Created conn: a DuckDB connection object
+2026-07-24 21:25:03 | INFO | BI | CALL a function to delete tables in reverse order of creation
+2026-07-24 21:25:03 | INFO | BI | START delete tables....
+2026-07-24 21:25:03 | INFO | BI | - Dropping fact_sales table if it exists
+2026-07-24 21:25:03 | INFO | BI | - Dropping dim_products table if it exists
+2026-07-24 21:25:03 | INFO | BI | - Dropping dim_customers table if it exists
+2026-07-24 21:25:03 | INFO | BI | - Dropping dim_stores table if it exists
+2026-07-24 21:25:03 | INFO | BI | - Dropping dim_campaigns table if it exists
+2026-07-24 21:25:03 | INFO | BI |   All tables deleted.
+2026-07-24 21:25:03 | INFO | BI | CALL a function to create dim_customers........
+2026-07-24 21:25:03 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:25:03 | INFO | BI | START create customers dimension table....
+2026-07-24 21:25:03 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:25:03 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_customers
+2026-07-24 21:25:03 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:25:03 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:25:03 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:25:03 | INFO | BI | - Look at the data to decide suitable column types
+2026-07-24 21:25:03 | INFO | BI | - customer_id is the primary key and should be an INTEGER
+2026-07-24 21:25:03 | INFO | BI | - first_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:25:03 | INFO | BI | - last_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:25:03 | INFO | BI | - region is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:25:03 | INFO | BI | - join_date should be a DATE column
+2026-07-24 21:25:03 | INFO | BI | - customer_type is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:25:03 | INFO | BI | - customer_tenure_years is an INTEGER column
+2026-07-24 21:25:03 | INFO | BI |   dim_customers created.
+2026-07-24 21:25:03 | INFO | BI | CALL a function to create dim_products........
+2026-07-24 21:25:03 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:25:03 | INFO | BI | START create products dimension table....
+2026-07-24 21:25:03 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:25:03 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_products
+2026-07-24 21:25:03 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:25:03 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:25:03 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:25:03 | INFO | BI | - Look at the data to decide suitable column types
+2026-07-24 21:25:03 | INFO | BI | - product_id is the primary key and should be an INTEGER
+2026-07-24 21:25:03 | INFO | BI | - category is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:25:03 | INFO | BI | - name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:25:03 | INFO | BI | - unit_price should be a DOUBLE column
+2026-07-24 21:25:03 | INFO | BI | - unit_cost should be a DOUBLE column
+2026-07-24 21:25:03 | INFO | BI | - average_quality_rating should be a INT column
+2026-07-24 21:25:03 | INFO | BI | - quality_rating is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:25:03 | INFO | BI |   dim_products created.
+2026-07-24 21:25:03 | INFO | BI | CALL a function to create dim_stores........
+2026-07-24 21:25:03 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:25:03 | INFO | BI | START create stores dimension table....
+2026-07-24 21:25:03 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:25:03 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_stores
+2026-07-24 21:25:03 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:25:03 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:25:03 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:25:03 | INFO | BI | - store_id is the primary key and should be an INTEGER
+2026-07-24 21:25:03 | INFO | BI | - store_type is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:25:03 | INFO | BI |   dim_stores created.
+2026-07-24 21:25:03 | INFO | BI | CALL a function to create dim_campaigns........
+2026-07-24 21:25:03 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:25:03 | INFO | BI | START create campaigns dimension table....
+2026-07-24 21:25:03 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:25:03 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_campaigns
+2026-07-24 21:25:03 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:25:03 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:25:03 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:25:03 | INFO | BI | - campaign_id is the primary key and should be an INTEGER
+2026-07-24 21:25:03 | INFO | BI | - campaign_type is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:25:03 | INFO | BI |   dim_campaigns created.
+2026-07-24 21:25:03 | INFO | BI | CALL a function to create fact_sales........
+2026-07-24 21:25:03 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:25:03 | INFO | BI | START create sales fact table....
+2026-07-24 21:25:03 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:25:03 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS fact_sales
+2026-07-24 21:25:03 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:25:03 | INFO | BI | The fact table references the dimension tables
+2026-07-24 21:25:03 | INFO | BI |    - use a foreign key to dim_customers(customer_id)
+2026-07-24 21:25:03 | INFO | BI |    - use a foreign key to dim_products(product_id)
+2026-07-24 21:25:03 | INFO | BI |    - use a foreign key to dim_stores(store_id)
+2026-07-24 21:25:03 | INFO | BI |    - use a foreign key to dim_campaigns(campaign_id)
+2026-07-24 21:25:03 | INFO | BI |    - the REFERENCES keyword ensures referential integrity
+2026-07-24 21:25:03 | INFO | BI |    - every sale must link to a valid customer,product,store type and campaign type
+2026-07-24 21:25:03 | INFO | BI |  sales_amount should be a DOUBLE column
+2026-07-24 21:25:03 | INFO | BI |  transaction_time_minutes should be an INTEGER column
+2026-07-24 21:25:03 | INFO | BI |   fact_sales created.
+2026-07-24 21:25:03 | INFO | BI | CALL a function to verify the schema........
+2026-07-24 21:25:03 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:25:03 | INFO | BI | START verify warehouse schema....
+2026-07-24 21:25:03 | INFO | BI | SHOW TABLES returns a list of all tables in the database
+2026-07-24 21:25:03 | INFO | BI | - Calling .fetchall() on the result of SHOW TABLES
+2026-07-24 21:25:03 | INFO | BI | - Gets the result - we can store it in a variable named 'tables'
+2026-07-24 21:25:03 | INFO | BI |   - Retrieved tables from the warehouse.
+2026-07-24 21:25:03 | INFO | BI |  - tables has a tuple for each table in the warehouse
+2026-07-24 21:25:03 | INFO | BI |  - the first tuple element (at the 0 index) is the table name
+2026-07-24 21:25:03 | INFO | BI |   Tables in warehouse: ['dim_campaigns', 'dim_customers', 'dim_products', 'dim_stores', 'fact_sales']
+2026-07-24 21:25:03 | INFO | BI | Workflow 1-CREATE DW complete
+2026-07-24 21:25:03 | INFO | BI | ========================
+2026-07-24 21:25:03 | INFO | BI | Executed successfully!
+2026-07-24 21:25:03 | INFO | BI | ========================
+2026-07-24 21:25:08 | INFO | BI | === RUN START ===
+2026-07-24 21:25:08 | INFO | BI | project=BI
+2026-07-24 21:25:08 | INFO | BI | repo_dir=bintel-04-warehouse
+2026-07-24 21:25:08 | INFO | BI | python=3.14.6
+2026-07-24 21:25:08 | INFO | BI | os=Windows 11
+2026-07-24 21:25:08 | INFO | BI | shell=powershell
+2026-07-24 21:25:08 | INFO | BI | cwd=.
+2026-07-24 21:25:08 | INFO | BI | github_actions=False
+2026-07-24 21:25:08 | INFO | BI | ========================
+2026-07-24 21:25:08 | INFO | BI | START main()
+2026-07-24 21:25:08 | INFO | BI | ========================
+2026-07-24 21:25:08 | INFO | BI | Prepared data: = data\prepared_2
+2026-07-24 21:25:08 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-24 21:25:08 | INFO | BI | CALL a function to load each prepared dataset.............
+2026-07-24 21:25:08 | INFO | BI | Loading customers prepared from data\prepared_2\customers_data_prepared.csv
+2026-07-24 21:25:08 | INFO | BI | Loaded: 200 rows, 7 columns
+2026-07-24 21:25:08 | INFO | BI | Loading products prepared from data\prepared_2\products_data_prepared.csv
+2026-07-24 21:25:08 | INFO | BI | Loaded: 99 rows, 7 columns
+2026-07-24 21:25:08 | INFO | BI | Loading sales prepared from data\prepared_2\sales_data_prepared.csv
+2026-07-24 21:25:08 | INFO | BI | Loaded: 2207 rows, 8 columns
+2026-07-24 21:25:08 | INFO | BI | Loading stores prepared from data\prepared_2\stores_data_prepared.csv
+2026-07-24 21:25:08 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:25:08 | INFO | BI | Loading campaigns prepared from data\prepared_2\campaigns_data_prepared.csv
+2026-07-24 21:25:08 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:25:08 | INFO | BI | ========================
+2026-07-24 21:25:08 | INFO | BI | ROW COUNTS BEFORE LOAD
+2026-07-24 21:25:08 | INFO | BI | ========================
+2026-07-24 21:25:08 | INFO | BI |   Customers: 200 rows
+2026-07-24 21:25:08 | INFO | BI |   Products:  99 rows
+2026-07-24 21:25:08 | INFO | BI |   Sales:     2207 rows
+2026-07-24 21:25:08 | INFO | BI |   Stores:    4 rows
+2026-07-24 21:25:08 | INFO | BI |   Campaigns: 4 rows
+2026-07-24 21:25:08 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-24 21:25:08 | INFO | BI | CALL a function to load customers........
+2026-07-24 21:25:08 | INFO | BI | Loading customers into dim_customers
+2026-07-24 21:25:08 | INFO | BI |   Loaded 200 rows into dim_customers
+2026-07-24 21:25:08 | INFO | BI | CALL a function to load products........
+2026-07-24 21:25:08 | INFO | BI | Loading products into dim_products
+2026-07-24 21:25:08 | INFO | BI |   Loaded 99 rows into dim_products
+2026-07-24 21:25:08 | INFO | BI | CALL a function to load stores........
+2026-07-24 21:25:08 | INFO | BI | Loading stores into dim_stores
+2026-07-24 21:25:08 | INFO | BI |   Loaded 4 rows into dim_stores
+2026-07-24 21:25:08 | INFO | BI | CALL a function to load campaigns........
+2026-07-24 21:25:08 | INFO | BI | Loading campaigns into dim_campaigns
+2026-07-24 21:25:08 | INFO | BI |   Loaded 4 rows into dim_campaigns
+2026-07-24 21:25:08 | INFO | BI | CALL a function to load sales........
+2026-07-24 21:25:08 | INFO | BI | Loading sales into fact_sales
+2026-07-24 21:30:22 | INFO | BI | === RUN START ===
+2026-07-24 21:30:22 | INFO | BI | project=BI
+2026-07-24 21:30:22 | INFO | BI | repo_dir=bintel-04-warehouse
+2026-07-24 21:30:22 | INFO | BI | python=3.14.6
+2026-07-24 21:30:22 | INFO | BI | os=Windows 11
+2026-07-24 21:30:22 | INFO | BI | shell=powershell
+2026-07-24 21:30:22 | INFO | BI | cwd=.
+2026-07-24 21:30:22 | INFO | BI | github_actions=False
+2026-07-24 21:30:22 | INFO | BI | ========================
+2026-07-24 21:30:22 | INFO | BI | START main()
+2026-07-24 21:30:22 | INFO | BI | ========================
+2026-07-24 21:30:22 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-24 21:30:22 | INFO | BI | Create the artifacts/ folder if it does not exist
+2026-07-24 21:30:22 | INFO | BI | Connect to DuckDB - creates the file if it does not exist
+2026-07-24 21:30:22 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-24 21:30:22 | INFO | BI | Created conn: a DuckDB connection object
+2026-07-24 21:30:22 | INFO | BI | CALL a function to delete tables in reverse order of creation
+2026-07-24 21:30:22 | INFO | BI | START delete tables....
+2026-07-24 21:30:22 | INFO | BI | - Dropping fact_sales table if it exists
+2026-07-24 21:30:22 | INFO | BI | - Dropping dim_products table if it exists
+2026-07-24 21:30:22 | INFO | BI | - Dropping dim_customers table if it exists
+2026-07-24 21:30:22 | INFO | BI | - Dropping dim_stores table if it exists
+2026-07-24 21:30:22 | INFO | BI | - Dropping dim_campaigns table if it exists
+2026-07-24 21:30:22 | INFO | BI |   All tables deleted.
+2026-07-24 21:30:22 | INFO | BI | CALL a function to create dim_customers........
+2026-07-24 21:30:22 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:30:22 | INFO | BI | START create customers dimension table....
+2026-07-24 21:30:22 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:30:22 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_customers
+2026-07-24 21:30:22 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:30:22 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:30:22 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:30:22 | INFO | BI | - Look at the data to decide suitable column types
+2026-07-24 21:30:22 | INFO | BI | - customer_id is the primary key and should be an INTEGER
+2026-07-24 21:30:22 | INFO | BI | - first_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:30:22 | INFO | BI | - last_name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:30:22 | INFO | BI | - region is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:30:22 | INFO | BI | - join_date should be a DATE column
+2026-07-24 21:30:22 | INFO | BI | - customer_type is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:30:22 | INFO | BI | - customer_tenure_years is an INTEGER column
+2026-07-24 21:30:22 | INFO | BI |   dim_customers created.
+2026-07-24 21:30:22 | INFO | BI | CALL a function to create dim_products........
+2026-07-24 21:30:22 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:30:22 | INFO | BI | START create products dimension table....
+2026-07-24 21:30:22 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:30:22 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_products
+2026-07-24 21:30:22 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:30:22 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:30:22 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:30:22 | INFO | BI | - Look at the data to decide suitable column types
+2026-07-24 21:30:22 | INFO | BI | - product_id is the primary key and should be an INTEGER
+2026-07-24 21:30:22 | INFO | BI | - category is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:30:22 | INFO | BI | - name is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:30:22 | INFO | BI | - unit_price should be a DOUBLE column
+2026-07-24 21:30:22 | INFO | BI | - unit_cost should be a DOUBLE column
+2026-07-24 21:30:22 | INFO | BI | - average_quality_rating should be a INT column
+2026-07-24 21:30:22 | INFO | BI | - quality_rating is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:30:22 | INFO | BI |   dim_products created.
+2026-07-24 21:30:22 | INFO | BI | CALL a function to create dim_stores........
+2026-07-24 21:30:22 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:30:22 | INFO | BI | START create stores dimension table....
+2026-07-24 21:30:22 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:30:22 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_stores
+2026-07-24 21:30:22 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:30:22 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:30:22 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:30:22 | INFO | BI | - store_id is the primary key and should be an INTEGER
+2026-07-24 21:30:22 | INFO | BI | - store_type is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:30:22 | INFO | BI |   dim_stores created.
+2026-07-24 21:30:22 | INFO | BI | CALL a function to create dim_campaigns........
+2026-07-24 21:30:22 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:30:22 | INFO | BI | START create campaigns dimension table....
+2026-07-24 21:30:22 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:30:22 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS dim_campaigns
+2026-07-24 21:30:22 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:30:22 | INFO | BI | CREATE TABLE with typed columns
+2026-07-24 21:30:22 | INFO | BI | - Every table should have one primary key column
+2026-07-24 21:30:22 | INFO | BI | - campaign_id is the primary key and should be an INTEGER
+2026-07-24 21:30:22 | INFO | BI | - campaign_type is text so we use VARCHAR (variable number of characters)
+2026-07-24 21:30:22 | INFO | BI |   dim_campaigns created.
+2026-07-24 21:30:22 | INFO | BI | CALL a function to create fact_sales........
+2026-07-24 21:30:22 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:30:22 | INFO | BI | START create sales fact table....
+2026-07-24 21:30:22 | INFO | BI | DROP the table if it already exists so we can recreate it cleanly
+2026-07-24 21:30:22 | INFO | BI | - Use SQL command: DROP TABLE IF EXISTS fact_sales
+2026-07-24 21:30:22 | INFO | BI | - Use conn.execute() to run the SQL command
+2026-07-24 21:30:22 | INFO | BI | The fact table references the dimension tables
+2026-07-24 21:30:22 | INFO | BI |    - use a foreign key to dim_customers(customer_id)
+2026-07-24 21:30:22 | INFO | BI |    - use a foreign key to dim_products(product_id)
+2026-07-24 21:30:22 | INFO | BI |    - use a foreign key to dim_stores(store_id)
+2026-07-24 21:30:22 | INFO | BI |    - use a foreign key to dim_campaigns(campaign_id)
+2026-07-24 21:30:22 | INFO | BI |    - the REFERENCES keyword ensures referential integrity
+2026-07-24 21:30:22 | INFO | BI |    - every sale must link to a valid customer,product,store type and campaign type
+2026-07-24 21:30:22 | INFO | BI |  sales_amount should be a DOUBLE column
+2026-07-24 21:30:22 | INFO | BI |  transaction_time_minutes should be an INTEGER column
+2026-07-24 21:30:22 | INFO | BI |   fact_sales created.
+2026-07-24 21:30:22 | INFO | BI | CALL a function to verify the schema........
+2026-07-24 21:30:22 | INFO | BI | PASS IN conn: the DuckDB connection object
+2026-07-24 21:30:22 | INFO | BI | START verify warehouse schema....
+2026-07-24 21:30:22 | INFO | BI | SHOW TABLES returns a list of all tables in the database
+2026-07-24 21:30:22 | INFO | BI | - Calling .fetchall() on the result of SHOW TABLES
+2026-07-24 21:30:22 | INFO | BI | - Gets the result - we can store it in a variable named 'tables'
+2026-07-24 21:30:22 | INFO | BI |   - Retrieved tables from the warehouse.
+2026-07-24 21:30:22 | INFO | BI |  - tables has a tuple for each table in the warehouse
+2026-07-24 21:30:22 | INFO | BI |  - the first tuple element (at the 0 index) is the table name
+2026-07-24 21:30:22 | INFO | BI |   Tables in warehouse: ['dim_campaigns', 'dim_customers', 'dim_products', 'dim_stores', 'fact_sales']
+2026-07-24 21:30:22 | INFO | BI | Workflow 1-CREATE DW complete
+2026-07-24 21:30:22 | INFO | BI | ========================
+2026-07-24 21:30:22 | INFO | BI | Executed successfully!
+2026-07-24 21:30:22 | INFO | BI | ========================
+2026-07-24 21:30:26 | INFO | BI | === RUN START ===
+2026-07-24 21:30:26 | INFO | BI | project=BI
+2026-07-24 21:30:26 | INFO | BI | repo_dir=bintel-04-warehouse
+2026-07-24 21:30:26 | INFO | BI | python=3.14.6
+2026-07-24 21:30:26 | INFO | BI | os=Windows 11
+2026-07-24 21:30:26 | INFO | BI | shell=powershell
+2026-07-24 21:30:26 | INFO | BI | cwd=.
+2026-07-24 21:30:26 | INFO | BI | github_actions=False
+2026-07-24 21:30:26 | INFO | BI | ========================
+2026-07-24 21:30:26 | INFO | BI | START main()
+2026-07-24 21:30:26 | INFO | BI | ========================
+2026-07-24 21:30:26 | INFO | BI | Prepared data: = data\prepared_2
+2026-07-24 21:30:26 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-24 21:30:26 | INFO | BI | CALL a function to load each prepared dataset.............
+2026-07-24 21:30:26 | INFO | BI | Loading customers prepared from data\prepared_2\customers_data_prepared.csv
+2026-07-24 21:30:26 | INFO | BI | Loaded: 200 rows, 7 columns
+2026-07-24 21:30:26 | INFO | BI | Loading products prepared from data\prepared_2\products_data_prepared.csv
+2026-07-24 21:30:26 | INFO | BI | Loaded: 100 rows, 7 columns
+2026-07-24 21:30:26 | INFO | BI | Loading sales prepared from data\prepared_2\sales_data_prepared.csv
+2026-07-24 21:30:26 | INFO | BI | Loaded: 2207 rows, 8 columns
+2026-07-24 21:30:26 | INFO | BI | Loading stores prepared from data\prepared_2\stores_data_prepared.csv
+2026-07-24 21:30:26 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:30:26 | INFO | BI | Loading campaigns prepared from data\prepared_2\campaigns_data_prepared.csv
+2026-07-24 21:30:26 | INFO | BI | Loaded: 4 rows, 2 columns
+2026-07-24 21:30:26 | INFO | BI | ========================
+2026-07-24 21:30:26 | INFO | BI | ROW COUNTS BEFORE LOAD
+2026-07-24 21:30:26 | INFO | BI | ========================
+2026-07-24 21:30:26 | INFO | BI |   Customers: 200 rows
+2026-07-24 21:30:26 | INFO | BI |   Products:  100 rows
+2026-07-24 21:30:26 | INFO | BI |   Sales:     2207 rows
+2026-07-24 21:30:26 | INFO | BI |   Stores:    4 rows
+2026-07-24 21:30:26 | INFO | BI |   Campaigns: 4 rows
+2026-07-24 21:30:26 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-24 21:30:26 | INFO | BI | CALL a function to load customers........
+2026-07-24 21:30:26 | INFO | BI | Loading customers into dim_customers
+2026-07-24 21:30:26 | INFO | BI |   Loaded 200 rows into dim_customers
+2026-07-24 21:30:26 | INFO | BI | CALL a function to load products........
+2026-07-24 21:30:26 | INFO | BI | Loading products into dim_products
+2026-07-24 21:30:26 | INFO | BI |   Loaded 100 rows into dim_products
+2026-07-24 21:30:26 | INFO | BI | CALL a function to load stores........
+2026-07-24 21:30:26 | INFO | BI | Loading stores into dim_stores
+2026-07-24 21:30:26 | INFO | BI |   Loaded 4 rows into dim_stores
+2026-07-24 21:30:26 | INFO | BI | CALL a function to load campaigns........
+2026-07-24 21:30:26 | INFO | BI | Loading campaigns into dim_campaigns
+2026-07-24 21:30:26 | INFO | BI |   Loaded 4 rows into dim_campaigns
+2026-07-24 21:30:26 | INFO | BI | CALL a function to load sales........
+2026-07-24 21:30:26 | INFO | BI | Loading sales into fact_sales
+2026-07-24 21:30:26 | INFO | BI |   Loaded 2207 rows into fact_sales
+2026-07-24 21:30:26 | INFO | BI | ========================
+2026-07-24 21:30:26 | INFO | BI | ROW COUNTS AFTER LOAD
+2026-07-24 21:30:26 | INFO | BI | ========================
+2026-07-24 21:30:26 | INFO | BI | CALL a function to verify row counts........
+2026-07-24 21:30:26 | INFO | BI |   PASS: dim_customers has 200 rows
+2026-07-24 21:30:26 | INFO | BI |   PASS: dim_products has 100 rows
+2026-07-24 21:30:26 | INFO | BI |   PASS: fact_sales has 2207 rows
+2026-07-24 21:30:26 | INFO | BI |   PASS: dim_stores has 4 rows
+2026-07-24 21:30:26 | INFO | BI |   PASS: dim_campaigns has 4 rows
+2026-07-24 21:30:26 | INFO | BI | Workflow 2-ETL complete
+2026-07-24 21:30:26 | INFO | BI | ========================
+2026-07-24 21:30:26 | INFO | BI | Executed successfully!
+2026-07-24 21:30:26 | INFO | BI | ========================

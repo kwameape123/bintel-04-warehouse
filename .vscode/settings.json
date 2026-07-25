@@ -52,8 +52,8 @@
       "alias": "smart_sales",
       "type": "file",
       "path": "./artifacts/smart_sales.duckdb",
-      "readOnly": false,
-      "attached": false
+      "readOnly": true,
+      "attached": true
     }
   ],
   "duckdb.defaultDatabase": "smart_sales"
