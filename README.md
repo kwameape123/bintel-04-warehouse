@@ -135,10 +135,10 @@ uvx pre-commit run --all-files
 uv run python -m bizintel.app_case
 
 # Workflow 1: build an empty data warehouse in artifacts/
-uv run python -m bizintel.dw_create_case
+uv run python -m bizintel.dw_create_arnold
 
 # Workflow 3: etl (extract-transform-load) prepared data into dw
-uv run python -m bizintel.etl_case
+uv run python -m bizintel.etl_arnold
 
 # run common chores
 uv run ruff format .
